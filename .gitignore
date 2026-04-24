@@ -39,3 +39,24 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# imagens, videos e logos
+/public/imagens/
+/public/videos/
+/public/logos/
+/public/fonts/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.svg
+*.ico
+*.mp4
+*.mov
+*.avi
+*.webm
+*.otf
+*.ttf
+*.woff
+*.woff2

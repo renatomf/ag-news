@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "TypoGrotesk";
+  src: url("/fonts/Typo Grotesk Rounded Demo.otf") format("opentype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ArialRounded";
+  src: url("/fonts/Arial Rounded Bold.ttf") format("truetype");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #ffffff;
+  --bg-soft: #f3f5ff;
+  --fg: #0c0c22;
+  --fg-muted: #6a6a8c;
+  --border: #e0e4f4;
+  --cyan: #00d4f5;
+  --green: #00e896;
+  --purple: #7040f0;
+  --pink: #f040e8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --font-sans: "TypoGrotesk", var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-display: "ArialRounded", "TypoGrotesk", ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+::selection {
+  background: rgba(112, 64, 240, 0.18);
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #fff; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--purple), var(--pink));
+  border-radius: 4px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #00d4f5 0%, #00e896 28%, #7040f0 65%, #f040e8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #00d4f5 0%, #00e896 28%, #7040f0 65%, #f040e8 100%);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+.animate-marquee-slow { animation: marquee 55s linear infinite reverse; }
+
+@keyframes blob-morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%       { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+  75%       { border-radius: 60% 30% 50% 40% / 40% 70% 30% 60%; }
+}
+.animate-blob      { animation: blob-morph 14s ease-in-out infinite; }
+.animate-blob-slow { animation: blob-morph 20s ease-in-out infinite reverse; }
