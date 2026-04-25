@@ -61,7 +61,7 @@ export default function Results() {
   return (
     <section
       className="relative py-28 md:py-40 overflow-hidden"
-      style={{ background: "#f3f5ff" }}
+      style={{ background: "#f6f9fc" }}
     >
       {/* Ambient */}
       <div

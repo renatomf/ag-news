@@ -7,7 +7,7 @@ export default function Contact() {
     <section
       id="contato"
       className="relative overflow-hidden flex flex-col"
-      style={{ background: "linear-gradient(180deg, #1f0333 0%, #0a0012 100%)" }}
+      style={{ background: "linear-gradient(180deg, #0a0012 0%, #1f0333 100%)" }}
     >
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28 md:pt-40 pb-14">

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 
@@ -11,56 +11,26 @@ const viagensImages = [
   "/imagens/viagens/03.jpg",
 ];
 
-function ViagensCarousel() {
-  const [index, setIndex] = useState(0);
-
-  const prev = () => setIndex((i) => (i - 1 + viagensImages.length) % viagensImages.length);
-  const next = () => setIndex((i) => (i + 1) % viagensImages.length);
-
-  useEffect(() => {
-    const timer = setInterval(next, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
+function ViagensCarousel({ index }: { index: number }) {
   return (
-    <div className="flex flex-col">
-      <div className="relative w-full h-48 overflow-hidden bg-[#0c0c22]">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.7 }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={viagensImages[index]}
-              alt="Hashtag Viagens"
-              fill
-              className="object-cover"
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-      <div className="flex items-center justify-end gap-2 px-5 pt-4">
-        <button
-          onClick={prev}
-          className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#7040f0] hover:bg-[#7040f0] flex items-center justify-center text-[#7040f0] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
+    <div className="relative w-full h-48 overflow-hidden bg-[#0c0c22]">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7 }}
+          className="absolute inset-0"
         >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="9 2 4 7 9 12" />
-          </svg>
-        </button>
-        <button
-          onClick={next}
-          className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#7040f0] hover:bg-[#7040f0] flex items-center justify-center text-[#7040f0] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
-        >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="5 2 10 7 5 12" />
-          </svg>
-        </button>
-      </div>
+          <Image
+            src={viagensImages[index]}
+            alt="Hashtag Viagens"
+            fill
+            className="object-cover"
+          />
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
@@ -123,11 +93,21 @@ const manifesto = [
 ];
 
 export default function WhyChooseUs() {
+  const [viagensIndex, setViagensIndex] = useState(0);
+
+  const viagensPrev = useCallback(() => setViagensIndex((i) => (i - 1 + viagensImages.length) % viagensImages.length), []);
+  const viagensNext = useCallback(() => setViagensIndex((i) => (i + 1) % viagensImages.length), []);
+
+  useEffect(() => {
+    const timer = setInterval(viagensNext, 5000);
+    return () => clearInterval(timer);
+  }, [viagensNext]);
+
   return (
     <section id="sobre" className="relative z-1 py-28 md:py-40 overflow-hidden" style={{ background: "linear-gradient(to bottom, transparent 0%, white 35%)" }}>
       {/* Radial white gradient behind "Somos Live Marketing" */}
       <div
-        className="absolute z-0 left-1/14 top-0 w-220 h-220 pointer-events-none"
+        className="absolute z-0 left-1/14 -top-10 w-220 h-220 pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 20%, rgba(255,0,0,0) 60%)" }}
       />
 
@@ -147,16 +127,38 @@ export default function WhyChooseUs() {
               </h2>
             </AnimateOnScroll>
             <AnimateOnScroll delay={0.18}>
-              <p className="text-[#6a6a8c] text-base md:text-lg font-medium leading-relaxed mb-8">
+              <p className="text-[#6a6a8c] text-base md:text-lg font-medium leading-relaxed mb-0">
                 15 anos no mercado conectando marcas a seus clientes e colaboradores
                 através de eventos e ações inovadoras e criativas.
               </p>
             </AnimateOnScroll>
 
+            {/* Nav buttons — top right, outside card */}
+            <div className="flex items-center justify-end gap-2 mb-4">
+              <button
+                onClick={viagensPrev}
+                aria-label="Anterior"
+                className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#7040f0] hover:bg-[#7040f0] flex items-center justify-center text-[#7040f0] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="9 2 4 7 9 12" />
+                </svg>
+              </button>
+              <button
+                onClick={viagensNext}
+                aria-label="Próximo"
+                className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#7040f0] hover:bg-[#7040f0] flex items-center justify-center text-[#7040f0] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="5 2 10 7 5 12" />
+                </svg>
+              </button>
+            </div>
+
             {/* Hashtag Viagens card */}
             <AnimateOnScroll delay={0.26}>
-              <div className="rounded-2xl overflow-hidden border border-[#e0e4f4] shadow-sm">
-                <ViagensCarousel />
+              <div className="rounded-2xl overflow-hidden border border-[#e0e4f4] shadow-lg">
+                <ViagensCarousel index={viagensIndex} />
                 <div className="bg-white p-5">
                   <p className="font-black text-[#0c0c22] text-base mb-2"># Hashtag Viagens</p>
                   <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed">
@@ -165,19 +167,13 @@ export default function WhyChooseUs() {
                     em logística para eventos, facilitando o fluxo de operações e informações
                     que podem ser gerenciadas por um único profissional de atendimento.
                   </p>
-                  <a
-                    href="#"
-                    className="inline-flex items-center gap-1 text-[#7040f0] font-semibold text-sm mt-4 hover:underline"
-                  >
-                    Saiba mais <span>›</span>
-                  </a>
                 </div>
               </div>
             </AnimateOnScroll>
           </div>
 
           {/* Manifesto */}
-          <div className="flex flex-col justify-center gap-5">
+          <div className="flex flex-col justify-center gap-5 mt-24">
             {manifesto.map((text, i) => (
               <AnimateOnScroll key={i} delay={i * 0.09} direction="right">
                 <p className="text-[#3d3d60] font-medium text-sm md:text-base leading-relaxed border-l-3 border-[#7040f0]/25 pl-5 hover:border-[#7040f0] transition-colors duration-300">
@@ -194,7 +190,7 @@ export default function WhyChooseUs() {
         </AnimateOnScroll>
 
         {/* Pillar cards */}
-        <div className="relative rounded-3xl overflow-hidden">
+        <div className="relative rounded-2xl overflow-hidden">
           <div className="absolute inset-0 brand-gradient" />
           <div className="relative z-1 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-8 lg:p-10">
             {pillars.map((p, i) => (

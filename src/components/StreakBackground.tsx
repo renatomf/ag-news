@@ -131,11 +131,11 @@ export default function StreakBackground() {
           </filter>
         </defs>
         <g ref={layerRef} mask="url(#sf-side-mask)">
-          <path ref={glowRef} d={GLOW_PATHS[0]} stroke="url(#sg1)" strokeWidth="340" fill="none" strokeLinecap="round" opacity="0.16" filter="url(#sf-glow)" />
-          <path ref={s1Ref} d={S1_PATHS[0]} stroke="url(#sg1)" strokeWidth="230" fill="none" strokeLinecap="round" opacity="0.88" />
-          <path ref={s2Ref} d={S2_PATHS[0]} stroke="url(#sg2)" strokeWidth="92" fill="none" strokeLinecap="round" opacity="0.46" />
-          <path ref={s3Ref} d={S3_PATHS[0]} stroke="url(#sg1)" strokeWidth="54" fill="none" strokeLinecap="round" opacity="0.36" />
-          <path ref={hlRef} d={HL_PATHS[0]} stroke="white" strokeWidth="24" fill="none" strokeLinecap="round" opacity="0.5" filter="url(#sf-blur)" />
+          <path ref={glowRef} d={GLOW_PATHS[0]} stroke="url(#sg1)" strokeWidth="340" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.16" filter="url(#sf-glow)" />
+          <path ref={s1Ref} d={S1_PATHS[0]} stroke="url(#sg1)" strokeWidth="200" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.88" />
+          <path ref={s2Ref} d={S2_PATHS[0]} stroke="url(#sg2)" strokeWidth="92" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.46" />
+          <path ref={s3Ref} d={S3_PATHS[0]} stroke="url(#sg1)" strokeWidth="54" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.36" />
+          <path ref={hlRef} d={HL_PATHS[0]} stroke="white" strokeWidth="24" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" filter="url(#sf-blur)" />
         </g>
       </svg>
     </div>

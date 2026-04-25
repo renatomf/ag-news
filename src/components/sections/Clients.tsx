@@ -65,7 +65,7 @@ function LogoTile({
           {/* Front */}
           <div
             className={`absolute inset-0 rounded-xl flex items-center justify-center ${
-              dark ? "bg-[#0c0c22]" : "bg-white border border-[#e0e4f4]"
+              dark ? "bg-[#0c0c22]" : "bg-white border border-white"
             }`}
             style={{ backfaceVisibility: "hidden" }}
           >

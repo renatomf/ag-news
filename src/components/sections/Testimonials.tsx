@@ -114,7 +114,7 @@ export default function Testimonials() {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.38, ease: [0.25, 0.1, 0.25, 1] }}
-                className="grid md:grid-cols-[1fr_45%]"
+                className="grid md:grid-cols-[1fr_45%] md:min-h-90"
               >
                 {/* Left — text */}
                 <div className="flex flex-col justify-center px-10 py-12 md:px-14 md:py-14">
@@ -122,11 +122,11 @@ export default function Testimonials() {
                     {t.author} · {t.company}
                   </p>
 
-                  <h3 className="text-2xl md:text-3xl font-black text-[#0c0c22] leading-snug tracking-tight mb-5">
+                  <h3 className="text-2xl md:text-3xl font-black text-[#0c0c22] leading-snug tracking-tight mb-5 line-clamp-4">
                     {t.quote}
                   </h3>
 
-                  <p className="text-sm text-[#0c0c22]/50 leading-relaxed">
+                  <p className="text-sm text-[#0c0c22]/50 leading-relaxed line-clamp-3">
                     {t.body}
                   </p>
                 </div>
@@ -146,6 +146,20 @@ export default function Testimonials() {
             </AnimatePresence>
           </div>
         </AnimateOnScroll>
+
+        {/* Nav buttons — below card, right-aligned, outside */}
+        <div className="flex items-center justify-end gap-2 mt-4">
+          <ArrowButton onClick={prev} label="Anterior">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 2 4 7 9 12" />
+            </svg>
+          </ArrowButton>
+          <ArrowButton onClick={next} label="Próximo">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="5 2 10 7 5 12" />
+            </svg>
+          </ArrowButton>
+        </div>
       </div>
     </section>
   );

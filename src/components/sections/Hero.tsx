@@ -28,7 +28,7 @@ export default function Hero() {
     >
 
       {/* Radial white gradient behind content */}
-      <div className="absolute z-10 left-1/8 top-0 w-250 h-250 pointer-events-none"
+      <div className="absolute z-10 left-1/12 top-30 w-200 h-200 pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(255,0,0,0) 70%)" }}
       />
 

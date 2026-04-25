@@ -57,7 +57,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicos" className="relative bg-[#f3f5ff] py-28 md:py-40 overflow-hidden">
+    <section id="servicos" className="relative bg-[#f6f9fc] py-28 md:py-40 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, #7040f0, transparent)" }}
