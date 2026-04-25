@@ -29,52 +29,54 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+        className={`fixed top-4 left-0 right-0 z-50 transition-all duration-400 ${
           scrolled
-            ? "bg-white/92 backdrop-blur-lg border-b border-[#e0e4f4] shadow-sm"
-            : "bg-transparent"
+            ? "w-7xl mx-auto rounded-xl bg-gray-200 mt-4 shadow-md"
+            : "w-7xl mx-auto bg-transparent "
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-18 py-4">
-          <Link href="/" aria-label="News Eventos — início">
-            <Image
-              src="/logos/ag-news/logo-degrade.svg"
-              alt="Logo News"
-              width={140}
-              height={32}
-              priority
-              className="object-cover object-left -ml-4"
-            />
-          </Link>
+        <div className="w-7xl mx-auto bg-transparent">
+          <div className="w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-14 py-4 ">
+            <Link href="/" aria-label="News Eventos — início">
+              <Image
+                src="/logos/ag-news/logo-degrade.svg"
+                alt="Logo News"
+                width={100}
+                height={32}
+                priority
+                className="object-cover object-left"
+              />
+            </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-semibold text-[#6a6a8c] hover:text-[#0c0c22] transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+            <nav className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-semibold text-[#6a6a8c] hover:text-[#0c0c22] transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
 
-          <a
-            href="#contato"
-            className="hidden md:inline-flex items-center text-sm font-bold text-white px-5 py-2.5 rounded-full brand-gradient hover:opacity-90 transition-opacity shadow-md shadow-purple-500/20"
-          >
-            Fale Conosco
-          </a>
+            <a
+              href="#contato"
+              className="hidden md:inline-flex items-center text-sm font-bold text-white px-5 py-2.5 rounded-full brand-gradient hover:opacity-90 transition-opacity shadow-md shadow-purple-500/20"
+            >
+              Fale Conosco
+            </a>
 
-          <button
-            onClick={() => setMobileOpen((v) => !v)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            aria-label="Menu"
-          >
-            <span className={`block h-0.5 w-6 bg-[#0c0c22] rounded-full transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block h-0.5 w-6 bg-[#0c0c22] rounded-full transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-0.5 w-6 bg-[#0c0c22] rounded-full transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-          </button>
+            <button
+              onClick={() => setMobileOpen((v) => !v)}
+              className="md:hidden flex flex-col gap-1.5 p-2"
+              aria-label="Menu"
+            >
+              <span className={`block h-0.5 w-6 bg-[#0c0c22] rounded-full transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block h-0.5 w-6 bg-[#0c0c22] rounded-full transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+              <span className={`block h-0.5 w-6 bg-[#0c0c22] rounded-full transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            </button>
+          </div>
         </div>
       </motion.header>
 

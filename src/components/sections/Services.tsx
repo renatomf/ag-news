@@ -1,86 +1,57 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 
 const services = [
   {
     id: "stands",
+    category: "Feiras & Exposições",
     title: "Stands",
     description: "Design e montagem de stands que impressionam e geram negócios em feiras e exposições.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2">
-        <rect x="3" y="9" width="18" height="13" rx="2" strokeLinecap="round" />
-        <path d="M3 9l9-7 9 7" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M9 22V14h6v8" strokeLinecap="round" />
-      </svg>
-    ),
-    gradient: "from-[#00d4f5] to-[#00e896]",
-    accentFrom: "#00d4f5", accentTo: "#00e896",
+    image: "/imagens/reckit/01.jpg",
+    accent: "#00d4f5",
   },
   {
     id: "eventos",
+    category: "Corporativo & Comemorativo",
     title: "Eventos",
     description: "Convenções, reuniões, festas comemorativas e road shows com criatividade e execução precisa.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2">
-        <rect x="3" y="4" width="18" height="18" rx="2" strokeLinecap="round" />
-        <path d="M16 2v4M8 2v4M3 10h18" strokeLinecap="round" />
-        <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" strokeLinecap="round" />
-      </svg>
-    ),
-    gradient: "from-[#00e896] to-[#7040f0]",
-    accentFrom: "#00e896", accentTo: "#7040f0",
+    image: "/imagens/reckit-evento/01.jpg",
+    accent: "#7040f0",
   },
   {
     id: "incentivos",
+    category: "Viagens & Campanhas",
     title: "Incentivos",
     description: "Campanhas e viagens de incentivo que engajam equipes e reconhecem resultados.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2">
-        <path d="M8 21h8M12 17v4M7 4H5a2 2 0 00-2 2v4a10 10 0 0018 0V6a2 2 0 00-2-2h-2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M12 4V2m-4 2a4 4 0 008 0" strokeLinecap="round" />
-      </svg>
-    ),
-    gradient: "from-[#7040f0] to-[#b060f8]",
-    accentFrom: "#7040f0", accentTo: "#b060f8",
+    image: "/imagens/viagens/01.jpg",
+    accent: "#f040e8",
   },
   {
     id: "experiencias",
+    category: "Momentos Únicos",
     title: "Experiências",
     description: "Experiências únicas e inesquecíveis que ficam na memória dos participantes.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    gradient: "from-[#b060f8] to-[#f040e8]",
-    accentFrom: "#b060f8", accentTo: "#f040e8",
+    image: "/imagens/chivas/01.jpg",
+    accent: "#00e896",
   },
   {
     id: "ativacoes",
+    category: "Live Marketing",
     title: "Ativações",
     description: "Ações que conectam marcas e pessoas com impacto real no ponto de venda e além.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2">
-        <path d="M22 12h-4l-3 9L9 3l-3 9H2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    gradient: "from-[#f040e8] to-[#f060a8]",
-    accentFrom: "#f040e8", accentTo: "#f060a8",
+    image: "/imagens/mcdonalds/01.jpg",
+    accent: "#b060f8",
   },
   {
     id: "marketing",
+    category: "Estratégia & Resultados",
     title: "Marketing",
     description: "Estratégias de live marketing que transformam momentos em resultados mensuráveis.",
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.2">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" strokeLinecap="round" strokeLinejoin="round" />
-        <polyline points="17 6 23 6 23 12" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    gradient: "from-[#00d4f5] to-[#7040f0]",
-    accentFrom: "#00d4f5", accentTo: "#7040f0",
+    image: "/imagens/jequiti/01.jpg",
+    accent: "#00d4f5",
   },
 ];
 
@@ -107,7 +78,8 @@ export default function Services() {
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.18}>
             <p className="text-[#6a6a8c] font-medium text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-              Especialistas em criar experiências inesquecíveis no que nos propomos a oferecer.
+              Especialistas em criar experiências inesquecíveis no
+              que nos propomos a oferecer aos nossos clientes.
             </p>
           </AnimateOnScroll>
         </div>
@@ -116,20 +88,38 @@ export default function Services() {
           {services.map((svc, i) => (
             <AnimateOnScroll key={svc.id} delay={i * 0.07}>
               <motion.div
-                whileHover={{ y: -7, boxShadow: "0 20px 48px rgba(112,64,240,0.13)" }}
-                transition={{ duration: 0.3 }}
-                className="group bg-white rounded-2xl border border-[#e0e4f4] p-7 shadow-sm cursor-default"
+                whileHover={{ scale: 1.015 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                className="group relative rounded-2xl overflow-hidden cursor-default"
+                style={{ height: "380px" }}
               >
-                <div
-                  className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 bg-linear-to-br ${svc.gradient} group-hover:scale-110 transition-transform duration-300`}
-                >
-                  {svc.icon}
-                </div>
-                <div
-                  className={`h-0.5 w-10 rounded-full bg-linear-to-r ${svc.gradient} mb-4 group-hover:w-16 transition-all duration-300`}
+                <Image
+                  src={svc.image}
+                  alt={svc.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <h3 className="font-black text-[#0c0c22] text-xl mb-3">{svc.title}</h3>
-                <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed">{svc.description}</p>
+
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/10" />
+
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-1"
+                  style={{ background: `linear-gradient(to right, ${svc.accent}, transparent)` }}
+                />
+
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <p
+                    className="text-[10px] font-bold tracking-widest uppercase mb-2"
+                    style={{ color: svc.accent }}
+                  >
+                    {svc.category}
+                  </p>
+                  <h3 className="font-black text-white text-2xl mb-2 leading-tight">{svc.title}</h3>
+                  <p className="text-white/60 text-sm font-medium leading-relaxed max-w-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
+                    {svc.description}
+                  </p>
+                </div>
               </motion.div>
             </AnimateOnScroll>
           ))}

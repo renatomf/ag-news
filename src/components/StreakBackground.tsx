@@ -117,7 +117,7 @@ export default function StreakBackground() {
           <linearGradient id="sf-edge-fade" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="black" />
             <stop offset="16%" stopColor="white" />
-            <stop offset="84%" stopColor="white" />
+            <stop offset="85%" stopColor="white" />
             <stop offset="100%" stopColor="black" />
           </linearGradient>
           <mask id="sf-side-mask">

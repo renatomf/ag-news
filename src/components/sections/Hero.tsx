@@ -29,7 +29,7 @@ export default function Hero() {
 
       {/* Radial white gradient behind content */}
       <div className="absolute z-10 left-1/8 top-0 w-250 h-250 pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 40%, rgba(255,0,0,0) 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(255,0,0,0) 70%)" }}
       />
 
       {/* Content */}
@@ -43,7 +43,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="inline-flex items-center gap-2.5 rounded-full px-5 py-2 border border-[#e0e4f4] bg-[#f3f5ff] mb-0"
+            className="inline-flex items-center gap-2.5 rounded-full px-5 py-2 border border-[#e0e4f4] bg-[#f3f5ff] mt-15 mb-10"
           >
             <span className="w-2 h-2 rounded-full bg-[#00e896] inline-block shrink-0" />
             <span className="text-[11px] font-bold text-[#6a6a8c] tracking-widest uppercase">
@@ -75,7 +75,7 @@ export default function Hero() {
             transition={{ duration: 0.65, delay: 0.68 }}
             className="text-base md:text-lg text-[#6a6a8c] font-medium leading-relaxed mb-10 max-w-md"
           >
-            15 anos conectando marcas e colaboradores através de eventos e
+            17 anos conectando marcas e colaboradores através de eventos e
             experiências que ficam na memória
           </motion.p>
 

@@ -6,6 +6,7 @@
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-002D, U+002F-2021, U+2023-2025, U+2027-FFFF;
 }
 
 @font-face {
@@ -46,6 +47,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::marker {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
 ::selection {
   background: rgba(112, 64, 240, 0.18);
 }
@@ -83,3 +88,13 @@ body {
 }
 .animate-blob      { animation: blob-morph 14s ease-in-out infinite; }
 .animate-blob-slow { animation: blob-morph 20s ease-in-out infinite reverse; }
+
+@keyframes gradient-flow {
+  0%   { background-position: 0% 0%; }
+  33%  { background-position: 100% 50%; }
+  66%  { background-position: 50% 100%; }
+  100% { background-position: 0% 0%; }
+}
+.animate-gradient-flow {
+  animation: gradient-flow 20s ease infinite;
+}

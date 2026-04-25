@@ -1,7 +1,69 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+
+const viagensImages = [
+  "/imagens/viagens/01.jpg",
+  "/imagens/viagens/02.jpg",
+  "/imagens/viagens/03.jpg",
+];
+
+function ViagensCarousel() {
+  const [index, setIndex] = useState(0);
+
+  const prev = () => setIndex((i) => (i - 1 + viagensImages.length) % viagensImages.length);
+  const next = () => setIndex((i) => (i + 1) % viagensImages.length);
+
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex flex-col">
+      <div className="relative w-full h-48 overflow-hidden bg-[#0c0c22]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7 }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={viagensImages[index]}
+              alt="Hashtag Viagens"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <div className="flex items-center justify-end gap-2 px-5 pt-4">
+        <button
+          onClick={prev}
+          className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#7040f0] hover:bg-[#7040f0] flex items-center justify-center text-[#7040f0] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 2 4 7 9 12" />
+          </svg>
+        </button>
+        <button
+          onClick={next}
+          className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#7040f0] hover:bg-[#7040f0] flex items-center justify-center text-[#7040f0] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="5 2 10 7 5 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+}
 
 const pillars = [
   {
@@ -63,9 +125,13 @@ const manifesto = [
 export default function WhyChooseUs() {
   return (
     <section id="sobre" className="relative z-1 py-28 md:py-40 overflow-hidden" style={{ background: "linear-gradient(to bottom, transparent 0%, white 35%)" }}>
-      {/* Soft top gradient to blend from dark hero */}
+      {/* Radial white gradient behind "Somos Live Marketing" */}
+      <div
+        className="absolute z-0 left-1/14 top-0 w-220 h-220 pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 20%, rgba(255,0,0,0) 60%)" }}
+      />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="relative z-1 max-w-7xl mx-auto px-6 lg:px-10">
         {/* Header two-col */}
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
           <div>
@@ -89,20 +155,22 @@ export default function WhyChooseUs() {
 
             {/* Hashtag Viagens card */}
             <AnimateOnScroll delay={0.26}>
-              <div className="rounded-2xl bg-[#f3f5ff] border border-[#e0e4f4] p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl brand-gradient flex items-center justify-center shrink-0">
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="white" strokeWidth="2">
-                      <path d="M9 2L11 7h5l-4 3 1.5 5L9 12l-4.5 3L6 10 2 7h5L9 2z" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-black text-[#0c0c22] text-sm mb-1"># Hashtag Viagens</p>
-                    <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed">
-                      Nossa subsidiária com foco exclusivo em logística para eventos —
-                      roteiros, aéreos, transfer, hotéis e seguro em um único atendimento.
-                    </p>
-                  </div>
+              <div className="rounded-2xl overflow-hidden border border-[#e0e4f4] shadow-sm">
+                <ViagensCarousel />
+                <div className="bg-white p-5">
+                  <p className="font-black text-[#0c0c22] text-base mb-2"># Hashtag Viagens</p>
+                  <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed">
+                    Após entendermos a necessidade dos nossos clientes com demandas de logística
+                    nos eventos, inauguramos a Hashtag Viagens, uma empresa com foco exclusivo
+                    em logística para eventos, facilitando o fluxo de operações e informações
+                    que podem ser gerenciadas por um único profissional de atendimento.
+                  </p>
+                  <a
+                    href="#"
+                    className="inline-flex items-center gap-1 text-[#7040f0] font-semibold text-sm mt-4 hover:underline"
+                  >
+                    Saiba mais <span>›</span>
+                  </a>
                 </div>
               </div>
             </AnimateOnScroll>
@@ -126,27 +194,24 @@ export default function WhyChooseUs() {
         </AnimateOnScroll>
 
         {/* Pillar cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {pillars.map((p, i) => (
-            <AnimateOnScroll key={p.num} delay={i * 0.08}>
-              <motion.div
-                whileHover={{ y: -6, boxShadow: "0 20px 48px rgba(112,64,240,0.12)" }}
-                transition={{ duration: 0.3 }}
-                className="group bg-[#f3f5ff] hover:bg-white rounded-2xl border border-[#e0e4f4] p-7 cursor-default transition-colors duration-300"
-              >
-                <div
-                  className={`w-11 h-11 rounded-xl bg-linear-to-br ${p.gradient} flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform duration-300`}
+        <div className="relative rounded-3xl overflow-hidden">
+          <div className="absolute inset-0 brand-gradient" />
+          <div className="relative z-1 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-8 lg:p-10">
+            {pillars.map((p, i) => (
+              <AnimateOnScroll key={p.num} delay={i * 0.08}>
+                <motion.div
+                  whileHover={{ y: -6, boxShadow: "0 28px 60px rgba(0,0,0,0.22)" }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-white rounded-2xl p-8 flex flex-col min-h-80 shadow-lg cursor-default"
                 >
-                  {p.icon}
-                </div>
-                <span className="text-[11px] font-bold tracking-[0.2em] gradient-text uppercase mb-3 block">
-                  {p.num}
-                </span>
-                <h3 className="font-black text-[#0c0c22] text-lg mb-2 leading-snug">{p.title}</h3>
-                <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed">{p.body}</p>
-              </motion.div>
-            </AnimateOnScroll>
-          ))}
+                  <h3 className="font-black text-[#0c0c22] text-lg leading-snug mb-4">{p.title}</h3>
+                  <span className="text-5xl font-black gradient-text mb-5 leading-none">{p.num}</span>
+                  <div className="w-full h-px bg-[#e0e4f4] mb-5" />
+                  <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed flex-1">{p.body}</p>
+                </motion.div>
+              </AnimateOnScroll>
+            ))}
+          </div>
         </div>
 
         {/* Bottom quote */}
