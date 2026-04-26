@@ -94,7 +94,7 @@ export default function StreakBackground() {
     <div
       ref={containerRef}
       aria-hidden
-      className="absolute top-0 right-0 w-full h-[200vh] pointer-events-none overflow-hidden"
+      className="absolute top-0 right-0 w-full h-[75vh] sm:h-[130vh] md:h-[200vh] pointer-events-none overflow-hidden"
       style={{ zIndex: 0 }}
     >
       <svg
@@ -132,7 +132,7 @@ export default function StreakBackground() {
         </defs>
         <g ref={layerRef} mask="url(#sf-side-mask)">
           <path ref={glowRef} d={GLOW_PATHS[0]} stroke="url(#sg1)" strokeWidth="340" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.16" filter="url(#sf-glow)" />
-          <path ref={s1Ref} d={S1_PATHS[0]} stroke="url(#sg1)" strokeWidth="200" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.88" />
+          <path ref={s1Ref} d={S1_PATHS[0]} stroke="url(#sg1)" strokeWidth="190" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.88" />
           <path ref={s2Ref} d={S2_PATHS[0]} stroke="url(#sg2)" strokeWidth="92" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.46" />
           <path ref={s3Ref} d={S3_PATHS[0]} stroke="url(#sg1)" strokeWidth="54" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.36" />
           <path ref={hlRef} d={HL_PATHS[0]} stroke="white" strokeWidth="24" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" filter="url(#sf-blur)" />

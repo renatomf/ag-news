@@ -69,13 +69,13 @@ function LogoTile({
             }`}
             style={{ backfaceVisibility: "hidden" }}
           >
-            <div className={`relative ${xl ? "w-72 h-20" : large ? "w-60 h-16" : "w-44 h-12"}`}>
+            <div className={`relative ${xl ? "w-24 h-7 sm:w-40 sm:h-11 md:w-56 md:h-14 lg:w-72 lg:h-20" : large ? "w-20 h-6 sm:w-32 sm:h-9 md:w-44 md:h-12 lg:w-60 lg:h-16" : "w-16 h-5 sm:w-24 sm:h-7 md:w-32 md:h-9 lg:w-44 lg:h-12"}`}>
               <Image
                 src={logo}
                 alt={name}
                 fill
                 className={`object-contain ${dark ? "brightness-0 invert" : ""}`}
-                sizes="240px"
+                sizes="(max-width: 640px) 96px, (max-width: 768px) 160px, (max-width: 1024px) 224px, 288px"
               />
             </div>
           </div>
@@ -89,13 +89,13 @@ function LogoTile({
               background: gradient,
             }}
           >
-            <div className={`relative ${xl ? "w-72 h-20" : large ? "w-60 h-16" : "w-44 h-12"}`}>
+            <div className={`relative ${xl ? "w-24 h-7 sm:w-40 sm:h-11 md:w-56 md:h-14 lg:w-72 lg:h-20" : large ? "w-20 h-6 sm:w-32 sm:h-9 md:w-44 md:h-12 lg:w-60 lg:h-16" : "w-16 h-5 sm:w-24 sm:h-7 md:w-32 md:h-9 lg:w-44 lg:h-12"}`}>
               <Image
                 src={logo}
                 alt={name}
                 fill
                 className="object-contain brightness-0 invert"
-                sizes="240px"
+                sizes="(max-width: 640px) 96px, (max-width: 768px) 160px, (max-width: 1024px) 224px, 288px"
               />
             </div>
           </div>
@@ -148,7 +148,7 @@ export default function Clients() {
   }, []);
 
   return (
-    <section id="clientes" className="relative bg-[#f5f5f7] py-28 md:py-40 overflow-hidden">
+    <section id="clientes" className="relative bg-[#f5f5f7] py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Header */}
@@ -160,7 +160,7 @@ export default function Clients() {
               </p>
             </AnimateOnScroll>
             <AnimateOnScroll delay={0.1}>
-              <h2 className="text-5xl md:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight">
                 Marcas que{" "}
                 <span className="gradient-text">confiam.</span>
               </h2>
@@ -169,12 +169,16 @@ export default function Clients() {
           <AnimateOnScroll delay={0.18}>
             <a
               href="#contato"
-              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0c0c22] text-white text-sm font-black hover:bg-[#1a1a3e] transition-colors duration-200"
+              className="group shrink-0 relative inline-flex overflow-hidden rounded-full bg-[#0c0c22] hover:bg-[#883fff] transition-colors duration-200 active:scale-[0.99] w-full sm:w-auto"
             >
-              Fale com a News
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M7 17L17 7M7 7h10v10" />
-              </svg>
+              {/* Texto padrão — sai para cima */}
+              <span className="relative z-10 flex items-center px-6 py-3 text-white text-sm font-black transition-transform duration-200 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                Fale com a News
+              </span>
+              {/* Texto hover — sobe de baixo */}
+              <span className="absolute inset-0 z-10 flex items-center gap-2 justify-center text-white text-sm font-black translate-y-full transition-transform duration-150 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0">
+                Fale com a News
+              </span>
             </a>
           </AnimateOnScroll>
         </div>
@@ -183,7 +187,7 @@ export default function Clients() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
 
           {/* Description card */}
-          <AnimateOnScroll>
+          <AnimateOnScroll className="col-span-2 md:col-span-1">
             <div className="flex flex-col justify-between aspect-4/3 rounded-xl border border-[#e0e4f4] bg-white p-6">
               <p className="text-[#0c0c22] font-medium text-sm leading-relaxed">
                 Ao longo de 15 anos, construímos relações de confiança com algumas das maiores marcas do Brasil.

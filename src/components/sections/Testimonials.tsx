@@ -69,7 +69,7 @@ export default function Testimonials() {
   const t = testimonials[current];
 
   return (
-    <section className="relative py-28 md:py-40 overflow-hidden bg-[#f5f5f7]">
+    <section className="relative py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden bg-[#f5f5f7]">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Header — same layout as Clients */}
@@ -80,7 +80,7 @@ export default function Testimonials() {
             </p>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.1}>
-            <h2 className="text-5xl md:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight">
               Quem conhece a News{" "}
               <span className="gradient-text">não quer outra.</span>
             </h2>
@@ -117,12 +117,12 @@ export default function Testimonials() {
                 className="grid md:grid-cols-[1fr_45%] md:min-h-90"
               >
                 {/* Left — text */}
-                <div className="flex flex-col justify-center px-10 py-12 md:px-14 md:py-14">
+                <div className="flex flex-col justify-center px-6 sm:px-10 py-8 sm:py-12 md:px-14 md:py-14">
                   <p className="text-[10px] font-bold tracking-[0.28em] text-[#7040f0] uppercase mb-5">
                     {t.author} · {t.company}
                   </p>
 
-                  <h3 className="text-2xl md:text-3xl font-black text-[#0c0c22] leading-snug tracking-tight mb-5 line-clamp-4">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-[#0c0c22] leading-snug tracking-tight mb-5 line-clamp-4">
                     {t.quote}
                   </h3>
 

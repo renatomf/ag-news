@@ -49,7 +49,7 @@ function Counter({ value, suffix, accent }: { value: number; suffix: string; acc
   return (
     <span
       ref={ref}
-      className="font-black text-6xl md:text-7xl leading-none"
+      className="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none"
       style={{ color: accent }}
     >
       {display}{suffix}
@@ -60,7 +60,7 @@ function Counter({ value, suffix, accent }: { value: number; suffix: string; acc
 export default function Results() {
   return (
     <section
-      className="relative py-28 md:py-40 overflow-hidden"
+      className="relative py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden"
       style={{ background: "#f6f9fc" }}
     >
       {/* Ambient */}
@@ -80,7 +80,7 @@ export default function Results() {
             </p>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.1}>
-            <h2 className="text-5xl md:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight">
               Números que{" "}
               <span className="gradient-text">falam por si.</span>
             </h2>
@@ -88,11 +88,11 @@ export default function Results() {
         </div>
 
         {/* Stat boxes */}
-        <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
           {stats.map((stat, i) => (
             <AnimateOnScroll key={stat.label} delay={i * 0.12}>
               <div
-                className="group relative rounded-2xl border border-[#e0e4f4] bg-white p-10 md:p-12 text-center overflow-hidden hover:border-[#c8cef0] shadow-sm transition-all duration-300"
+                className="group relative rounded-2xl border border-[#e0e4f4] bg-white p-6 sm:p-8 md:p-10 lg:p-12 text-center overflow-hidden hover:border-[#c8cef0] shadow-sm transition-all duration-300"
               >
                 {/* Hover glow */}
                 <div
@@ -122,7 +122,7 @@ export default function Results() {
 
         {/* CTA strip */}
         <AnimateOnScroll delay={0.3}>
-          <div className="mt-14 rounded-2xl border border-[#e0e4f4] bg-white p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative shadow-sm">
+          <div className="mt-14 rounded-2xl border border-[#e0e4f4] bg-white p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-6 overflow-hidden relative shadow-sm">
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -131,7 +131,7 @@ export default function Results() {
               }}
             />
             <div className="relative">
-              <p className="font-black text-2xl md:text-3xl text-[#0c0c22] leading-snug">
+              <p className="font-black text-xl sm:text-2xl md:text-3xl text-[#0c0c22] leading-snug">
                 Cada cliente importa.{" "}
                 <span className="gradient-text">Cada evento importa.</span>
               </p>
@@ -139,7 +139,7 @@ export default function Results() {
             </div>
             <a
               href="#contato"
-              className="relative shrink-0 px-8 py-4 rounded-full text-sm font-black text-white brand-gradient hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/25 whitespace-nowrap"
+              className="relative w-full md:w-auto text-center shrink-0 px-8 py-4 rounded-full text-sm font-black text-white brand-gradient hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/25 whitespace-nowrap"
             >
               Fale com a News
             </a>

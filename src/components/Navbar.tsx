@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 
 const navLinks = [
   { label: "A News", href: "#sobre" },
@@ -23,92 +22,117 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  const lineColor = "bg-white";
+
   return (
     <>
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-        className={`fixed top-4 left-0 right-0 z-50 transition-all duration-400 ${
-          scrolled
-            ? "w-7xl mx-auto rounded-xl bg-gray-200 mt-4 shadow-md"
-            : "w-7xl mx-auto bg-transparent "
+        style={{ zIndex: 110 }}
+        className={`fixed top-4 left-3 right-3 lg:left-0 lg:right-0 rounded-2xl lg:rounded-none transition-all duration-300 bg-[#3d2270] lg:bg-transparent ${
+          scrolled ? "lg:bg-white/70 lg:backdrop-blur-lg " : ""
         }`}
       >
-        <div className="w-7xl mx-auto bg-transparent">
-          <div className="w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-14 py-4 ">
-            <Link href="/" aria-label="News Eventos — início">
-              <Image
-                src="/logos/ag-news/logo-degrade.svg"
-                alt="Logo News"
-                width={100}
-                height={32}
-                priority
-                className="object-cover object-left"
-              />
-            </Link>
+        <div className="max-w-7xl mx-auto px-8 lg:px-10 flex items-center justify-between h-16">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            aria-label="News Eventos — início"
+            className="cursor-pointer"
+          >
+            <Image
+              src="/logos/ag-news/logo-degrade.svg"
+              alt="Logo News"
+              width={110}
+              height={26}
+              priority
+              className="object-cover object-left brightness-0 invert lg:brightness-100 lg:invert-0"
+            />
+          </button>
 
-            <nav className="hidden md:flex items-center gap-8">
+          {/* Desktop nav + CTA agrupados à direita */}
+          <div className="hidden lg:flex items-center gap-8">
+            <nav className="flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-semibold text-[#6a6a8c] hover:text-[#0c0c22] transition-colors duration-200"
+                  className="text-sm font-normal text-[#0c0c22] hover:text-[#883fff] transition-colors duration-200"
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
-
             <a
               href="#contato"
-              className="hidden md:inline-flex items-center text-sm font-bold text-white px-5 py-2.5 rounded-full brand-gradient hover:opacity-90 transition-opacity shadow-md shadow-purple-500/20"
+              className="group relative overflow-hidden rounded-full bg-[#0c0c22] hover:bg-[#883fff] transition-colors duration-200 active:scale-[0.99]"
             >
-              Fale Conosco
+              <span className="relative z-10 flex items-center px-5 py-2.5 text-white text-sm font-bold transition-transform duration-200 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                Fale Conosco
+              </span>
+              <span className="absolute inset-0 z-10 flex items-center justify-center text-white text-sm font-bold translate-y-full transition-transform duration-150 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0">
+                Fale Conosco
+              </span>
             </a>
-
-            <button
-              onClick={() => setMobileOpen((v) => !v)}
-              className="md:hidden flex flex-col gap-1.5 p-2"
-              aria-label="Menu"
-            >
-              <span className={`block h-0.5 w-6 bg-[#0c0c22] rounded-full transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-              <span className={`block h-0.5 w-6 bg-[#0c0c22] rounded-full transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-0.5 w-6 bg-[#0c0c22] rounded-full transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-            </button>
           </div>
+
+          {/* Hamburger — mobile + tablet (vira X quando aberto) */}
+          <button
+            onClick={() => setMobileOpen((v) => !v)}
+            className="lg:hidden flex flex-col gap-1.5 p-2"
+            aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+          >
+            <span className={`block h-0.5 w-6 rounded-full transition-all duration-300 ${lineColor} ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block h-0.5 w-6 rounded-full transition-all duration-300 ${lineColor} ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-0.5 w-6 rounded-full transition-all duration-300 ${lineColor} ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </button>
         </div>
       </motion.header>
 
+      {/* Mobile/tablet full-screen drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -16 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.25 }}
-            className="fixed top-17 left-0 right-0 z-40 bg-white border-b border-[#e0e4f4] shadow-lg py-6 px-6 flex flex-col gap-5"
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="fixed inset-0 lg:hidden flex flex-col bg-[#3d2270]"
+            style={{ zIndex: 100 }}
           >
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.06 }}
-                className="text-base font-bold text-[#0c0c22] hover:text-[#7040f0] transition-colors"
+            {/* Links */}
+            <nav className="flex flex-col px-10 w-full gap-8 items-start pt-48">
+              <motion.button
+                onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setMobileOpen(false); }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.3, delay: 0, ease: [0.25, 0.1, 0.25, 1] }}
+                className="text-4xl sm:text-5xl font-black text-white/80 hover:text-white py-3 transition-colors w-full text-left cursor-pointer"
               >
-                {link.label}
-              </motion.a>
-            ))}
-            <a
-              href="#contato"
-              onClick={() => setMobileOpen(false)}
-              className="self-start text-sm font-bold text-white px-6 py-3 rounded-full brand-gradient"
-            >
-              Fale Conosco
-            </a>
+                Início
+              </motion.button>
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.3, delay: (i + 1) * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
+                  className="text-4xl sm:text-5xl font-black text-white/80 hover:text-white py-3 transition-colors w-full text-left"
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

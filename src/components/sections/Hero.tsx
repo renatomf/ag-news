@@ -24,18 +24,18 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen bg-transparent flex items-start lg:items-center"
+      className="relative min-h-[65vh] sm:min-h-[85vh] md:min-h-screen bg-transparent flex items-start lg:items-center overflow-hidden"
     >
 
       {/* Radial white gradient behind content */}
-      <div className="absolute z-10 left-1/12 top-30 w-200 h-200 pointer-events-none"
+      <div className="absolute z-10 -left-60 top-40 w-210 h-210 sm:left-1/12 sm:top-30 sm:w-200 sm:h-200 pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(255,0,0,0) 70%)" }}
       />
 
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pt-24 lg:pt-10 pb-24"
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pt-24 lg:pt-10 pb-16 sm:pb-16 md:pb-24"
       >
         <div className="max-w-xl lg:max-w-2xl">
           {/* Badge */}
@@ -46,13 +46,13 @@ export default function Hero() {
             className="inline-flex items-center gap-2.5 rounded-full px-5 py-2 border border-[#e0e4f4] bg-[#f3f5ff] mt-15 mb-10"
           >
             <span className="w-2 h-2 rounded-full bg-[#00e896] inline-block shrink-0" />
-            <span className="text-[11px] font-bold text-[#6a6a8c] tracking-widest uppercase">
+            <span className="text-[10px] font-bold text-[#6a6a8c] tracking-widest uppercase">
               Agência de Eventos · São Paulo · Desde 2007
             </span>
           </motion.div>
 
           {/* Headline */}
-          <div className="overflow-hidden -mb-4 mt-10">
+          <div className="overflow-hidden -mb-4 mt-4">
             <motion.div
               initial={{ y: "115%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -88,13 +88,13 @@ export default function Hero() {
           >
             <a
               href="#sobre"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-black text-white brand-gradient hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/25"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full text-sm font-black text-white brand-gradient hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/25"
             >
               Conheça a News
             </a>
             <a
               href="#contato"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-[#0c0c22] border-2 border-[#e0e4f4] hover:border-[#7040f0]/40 hover:bg-[#f3f5ff] transition-all duration-300"
+              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full text-sm font-bold bg-white text-[#0c0c22] border-2 border-[#e0e4f4] hover:border-[#7040f0]/40 hover:bg-[#f3f5ff] transition-all duration-300"
             >
               Fale Conosco
             </a>
@@ -105,37 +105,19 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.06 }}
-            className="flex items-center"
+            className="flex flex-wrap items-center gap-y-4"
           >
             {stats.map((s, i) => (
               <div
                 key={s.label}
-                className={`${i > 0 ? "border-l border-[#e0e4f4] pl-8 ml-8" : ""}`}
+                className={`${i > 0 ? "border-l border-[#e0e4f4] pl-6 ml-6 sm:pl-8 sm:ml-8" : ""}`}
               >
-                <p className="text-3xl md:text-4xl font-black gradient-text leading-none">{s.value}</p>
+                <p className="text-2xl sm:text-3xl md:text-4xl font-black gradient-text leading-none">{s.value}</p>
                 <p className="text-[10px] font-bold text-[#6a6a8c] uppercase tracking-widest mt-1.5 itenc">{s.label}</p>
               </div>
             ))}
           </motion.div>
         </div>
-      </motion.div>
-
-      {/* Scroll cue */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="flex items-center justify-center text-[#6a6a8c]/40"
-        >
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <path d="M5 8l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </motion.div>
       </motion.div>
     </section>
   );

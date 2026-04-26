@@ -57,7 +57,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicos" className="relative bg-[#f6f9fc] py-28 md:py-40 overflow-hidden">
+    <section id="servicos" className="relative bg-[#f6f9fc] py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, #7040f0, transparent)" }}
@@ -71,7 +71,7 @@ export default function Services() {
             </p>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.1}>
-            <h2 className="text-5xl md:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight mb-5">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight mb-5">
               Somos{" "}
               <span className="gradient-text">360°</span>
             </h2>
@@ -90,8 +90,7 @@ export default function Services() {
               <motion.div
                 whileHover={{ scale: 1.015 }}
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                className="group relative rounded-2xl overflow-hidden cursor-default"
-                style={{ height: "380px" }}
+                className="group relative rounded-2xl overflow-hidden cursor-default h-72 sm:h-72 md:h-95"
               >
                 <Image
                   src={svc.image}
@@ -116,7 +115,7 @@ export default function Services() {
                     {svc.category}
                   </p>
                   <h3 className="font-black text-white text-2xl mb-2 leading-tight">{svc.title}</h3>
-                  <p className="text-white/60 text-sm font-medium leading-relaxed max-w-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
+                  <p className="text-white/60 text-sm font-medium leading-relaxed max-w-sm opacity-100 sm:opacity-0 sm:group-hover:opacity-100 translate-y-0 sm:translate-y-2 sm:group-hover:translate-y-0 transition-all duration-400">
                     {svc.description}
                   </p>
                 </div>

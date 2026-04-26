@@ -13,7 +13,7 @@ const viagensImages = [
 
 function ViagensCarousel({ index }: { index: number }) {
   return (
-    <div className="relative w-full h-48 overflow-hidden bg-[#0c0c22]">
+    <div className="relative w-full h-full min-h-48 overflow-hidden bg-[#0c0c22]">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -104,7 +104,7 @@ export default function WhyChooseUs() {
   }, [viagensNext]);
 
   return (
-    <section id="sobre" className="relative z-1 py-28 md:py-40 overflow-hidden" style={{ background: "linear-gradient(to bottom, transparent 0%, white 35%)" }}>
+    <section id="sobre" className="relative z-1 pt-0 sm:pt-20 md:pt-28 lg:pt-40 pb-16 sm:pb-20 md:pb-28 lg:pb-40 overflow-hidden" style={{ background: "linear-gradient(to bottom, transparent 0%, white 35%)" }}>
       {/* Radial white gradient behind "Somos Live Marketing" */}
       <div
         className="absolute z-0 left-1/14 -top-10 w-220 h-220 pointer-events-none"
@@ -113,7 +113,7 @@ export default function WhyChooseUs() {
 
       <div className="relative z-1 max-w-7xl mx-auto px-6 lg:px-10">
         {/* Header two-col */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 lg:gap-24 mb-14 md:mb-20 lg:mb-24">
           <div>
             <AnimateOnScroll>
               <p className="text-[11px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-5">
@@ -121,59 +121,64 @@ export default function WhyChooseUs() {
               </p>
             </AnimateOnScroll>
             <AnimateOnScroll delay={0.1}>
-              <h2 className="text-5xl md:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight mb-6">
                 Somos{" "}
                 <span className="gradient-text">Live&nbsp;Marketing</span>
               </h2>
             </AnimateOnScroll>
             <AnimateOnScroll delay={0.18}>
               <p className="text-[#6a6a8c] text-base md:text-lg font-medium leading-relaxed mb-0">
-                15 anos no mercado conectando marcas a seus clientes e colaboradores
+                17 anos no mercado conectando marcas a seus clientes e colaboradores
                 através de eventos e ações inovadoras e criativas.
               </p>
             </AnimateOnScroll>
 
-            {/* Nav buttons — top right, outside card */}
-            <div className="flex items-center justify-end gap-2 mb-4">
-              <button
-                onClick={viagensPrev}
-                aria-label="Anterior"
-                className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#7040f0] hover:bg-[#7040f0] flex items-center justify-center text-[#7040f0] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="9 2 4 7 9 12" />
-                </svg>
-              </button>
-              <button
-                onClick={viagensNext}
-                aria-label="Próximo"
-                className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#7040f0] hover:bg-[#7040f0] flex items-center justify-center text-[#7040f0] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="5 2 10 7 5 12" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Hashtag Viagens card */}
+            {/* Hashtag Viagens card — horizontal layout */}
             <AnimateOnScroll delay={0.26}>
-              <div className="rounded-2xl overflow-hidden border border-[#e0e4f4] shadow-lg">
-                <ViagensCarousel index={viagensIndex} />
-                <div className="bg-white p-5">
-                  <p className="font-black text-[#0c0c22] text-base mb-2"># Hashtag Viagens</p>
-                  <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed">
-                    Após entendermos a necessidade dos nossos clientes com demandas de logística
-                    nos eventos, inauguramos a Hashtag Viagens, uma empresa com foco exclusivo
-                    em logística para eventos, facilitando o fluxo de operações e informações
-                    que podem ser gerenciadas por um único profissional de atendimento.
-                  </p>
+              <div className="relative mt-8 rounded-xl overflow-hidden shadow-lg bg-white">
+
+                <div className="flex flex-col sm:flex-row">
+                  {/* Left — text + arrows */}
+                  <div className="flex flex-col justify-between gap-6 p-6 sm:p-7 sm:w-1/2">
+                    <div>
+                      <p className="font-black text-[#0c0c22] text-lg mb-3"># Hashtag Viagens</p>
+                      <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed">
+                        Empresa com foco exclusivo em logística para eventos, facilitando o fluxo de operações gerenciadas por um único profissional de atendimento.
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={viagensPrev}
+                        aria-label="Anterior"
+                        className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#883fff] hover:bg-[#883fff] flex items-center justify-center text-[#883fff] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="9 2 4 7 9 12" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={viagensNext}
+                        aria-label="Próximo"
+                        className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#883fff] hover:bg-[#883fff] flex items-center justify-center text-[#883fff] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="5 2 10 7 5 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Right — image */}
+                  <div className="relative h-52 sm:h-auto sm:w-1/2">
+                    <ViagensCarousel index={viagensIndex} />
+                  </div>
                 </div>
               </div>
             </AnimateOnScroll>
           </div>
 
           {/* Manifesto */}
-          <div className="flex flex-col justify-center gap-5 mt-24">
+          <div className="flex flex-col justify-center gap-5 mt-0 lg:mt-8">
             {manifesto.map((text, i) => (
               <AnimateOnScroll key={i} delay={i * 0.09} direction="right">
                 <p className="text-[#3d3d60] font-medium text-sm md:text-base leading-relaxed border-l-3 border-[#7040f0]/25 pl-5 hover:border-[#7040f0] transition-colors duration-300">
@@ -192,16 +197,16 @@ export default function WhyChooseUs() {
         {/* Pillar cards */}
         <div className="relative rounded-2xl overflow-hidden">
           <div className="absolute inset-0 brand-gradient" />
-          <div className="relative z-1 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 p-8 lg:p-10">
+          <div className="relative z-1 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 p-5 sm:p-6 md:p-8 lg:p-10">
             {pillars.map((p, i) => (
               <AnimateOnScroll key={p.num} delay={i * 0.08}>
                 <motion.div
                   whileHover={{ y: -6, boxShadow: "0 28px 60px rgba(0,0,0,0.22)" }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white rounded-2xl p-8 flex flex-col min-h-80 shadow-lg cursor-default"
+                  className="bg-white rounded-2xl p-5 sm:p-6 md:p-8 flex flex-col min-h-60 sm:min-h-72 md:min-h-80 shadow-lg cursor-default"
                 >
                   <h3 className="font-black text-[#0c0c22] text-lg leading-snug mb-4">{p.title}</h3>
-                  <span className="text-5xl font-black gradient-text mb-5 leading-none">{p.num}</span>
+                  <span className="text-3xl sm:text-4xl md:text-5xl font-black gradient-text mb-5 leading-none">{p.num}</span>
                   <div className="w-full h-px bg-[#e0e4f4] mb-5" />
                   <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed flex-1">{p.body}</p>
                 </motion.div>
@@ -213,7 +218,7 @@ export default function WhyChooseUs() {
         {/* Bottom quote */}
         <AnimateOnScroll delay={0.2}>
           <div className="mt-20 max-w-2xl mx-auto text-center">
-            <p className="text-2xl md:text-3xl font-black text-[#0c0c22] leading-snug">
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-[#0c0c22] leading-snug">
               &ldquo;Aqui, a gente resolve. Depois explica.
               Porque quem conhece a News…{" "}
               <span className="gradient-text">não quer outra.&rdquo;</span>

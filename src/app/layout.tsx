@@ -22,12 +22,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${nunito.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-white text-[#0c0c22] font-sans antialiased">
-        <div aria-hidden className="fixed inset-0 z-50 pointer-events-none">
-          <div className="h-full max-w-7xl mx-auto relative">
-            {/* <div className="absolute left-0 inset-y-0 w-px bg-[#e0e4f4]" />
-            <div className="absolute right-0 inset-y-0 w-px bg-[#e0e4f4]" /> */}
-          </div>
-        </div>
         {children}
       </body>
     </html>
