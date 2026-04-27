@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 const clients = [
   { name: "Reckitt",          logo: "/logos/clientes/reckitt.svg",        dark: true,  large: true,  xl: false },

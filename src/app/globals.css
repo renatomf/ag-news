@@ -98,3 +98,12 @@ body {
 .animate-gradient-flow {
   animation: gradient-flow 20s ease infinite;
 }
+
+.contact-band-clip {
+  clip-path: polygon(0 90%, 100% 60%, 100% 100%, 0% 100%);
+}
+@media (min-width: 768px) {
+  .contact-band-clip {
+    clip-path: polygon(0 90%, 100% 0%, 100% 100%, 0% 100%);
+  }
+}

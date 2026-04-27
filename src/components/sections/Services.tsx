@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 const services = [
   {

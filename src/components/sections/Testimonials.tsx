@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 const testimonials = [
   {

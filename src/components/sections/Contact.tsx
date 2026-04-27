@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 export default function Contact() {
   return (
@@ -92,19 +92,17 @@ export default function Contact() {
       <div className="relative h-72 md:h-96 overflow-hidden">
         {/* Diagonal clip */}
         <div
-          className="absolute inset-0 animate-gradient-flow"
+          className="contact-band-clip absolute inset-0 animate-gradient-flow"
           style={{
             background:
-              "linear-gradient(135deg, #2d0060, #7040f0, #f040e8, #b060f8, #00d4f5, #00e896, #7040f0, #2d0060)",
+              "linear-gradient(135deg, #00d4f5, #00e896, #7040f0, #f040e8, #00d4f5, #00e896, #7040f0)",
             backgroundSize: "300% 300%",
-            clipPath: "polygon(0 90%, 100% 0%, 100% 100%, 0% 100%)",
           }}
         />
         {/* Soft gloss overlay */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="contact-band-clip absolute inset-0 pointer-events-none"
           style={{
-            clipPath: "polygon(0 90%, 100% 0%, 100% 100%, 0% 100%)",
             background:
               "linear-gradient(180deg, rgba(255,255,255,0.07) 0%, transparent 60%)",
           }}

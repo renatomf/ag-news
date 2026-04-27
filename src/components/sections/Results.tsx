@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
-import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 const stats = [
   {

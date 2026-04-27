@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 const viagensImages = [
   "/imagens/viagens/01.jpg",
