@@ -42,7 +42,6 @@ next-env.d.ts
 
 # imagens, videos e logos
 /public/imagens/
-/public/videos/
 /public/logos/
 /public/fonts/
 *.jpg
