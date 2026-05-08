@@ -49,14 +49,14 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicos" className="relative bg-[#f6f9fc] py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden cu">
+    <section id="servicos" className="relative bg-[#f6f9fc] py-16 sm:py-20 md:py-28 lg:py-32 overflow-hidden cu">
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, #7040f0, transparent)" }}
       />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <AnimateOnScroll>
             <p className="text-[15px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-5">
               O que fazemos
@@ -67,11 +67,6 @@ export default function Services() {
               Somos{" "}
               <span className="gradient-text">Impacto</span>
             </h2>
-          </AnimateOnScroll>
-          <AnimateOnScroll delay={0.18}>
-            <p className="text-[#6a6a8c] font-medium text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-              Criatividade diferenciada, inteligência na execução e conhecimento consolidado para transformar ideias em experiências memoráveis.
-            </p>
           </AnimateOnScroll>
         </div>
 
