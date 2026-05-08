@@ -24,11 +24,11 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[58vh] sm:min-h-[85vh] md:min-h-screen bg-transparent flex items-start lg:items-center overflow-hidden"
+      className="relative min-h-[56vh] sm:min-h-[85vh] md:min-h-screen bg-transparent flex items-start lg:items-center overflow-hidden"
     >
 
       {/* Radial white gradient behind content */}
-      <div className="absolute z-10 -left-12 top-24 w-160 h-160 sm:left-1/12 sm:top-30 sm:w-200 sm:h-200 pointer-events-none"
+      <div className="absolute z-10 -left-12 top-40 w-140 h-140 sm:left-1/12 sm:top-30 sm:w-200 sm:h-200 pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(255,0,0,0) 70%)" }}
       />
 
