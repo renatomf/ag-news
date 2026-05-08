@@ -14,16 +14,16 @@ export default function Contact() {
       <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28 md:pt-40">
         {/* Heading */}
         <AnimateOnScroll>
-          <div className="flex items-start justify-between gap-10 mb-6">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight">
+          <div className="flex flex-col items-center md:flex-row md:items-start justify-between gap-10 mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight text-center md:text-left">
               Vamos criar algo inesquecível.
             </h2>
             <Image
               src="/logos/ag-news/logo-lampada.svg"
               alt="News Eventos"
-              width={160}
-              height={160}
-              className="shrink-0 mt-2"
+              width={80}
+              height={80}
+              className="shrink-0 mt-4 md:w-[160px] md:h-[160px]"
             />
           </div>
         </AnimateOnScroll>
