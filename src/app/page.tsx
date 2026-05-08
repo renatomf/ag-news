@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import StreakBackground from "@/components/StreakBackground";
 import Hero from "@/components/sections/Hero";
-import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import Cases from "@/components/sections/Cases";
 import Results from "@/components/sections/Results";
@@ -16,7 +16,7 @@ export default function Home() {
       <main className="relative">
         <StreakBackground />
         <Hero />
-        <WhyChooseUs />
+        <About />
         <Services />
         <Cases />
         <Results />

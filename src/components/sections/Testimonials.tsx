@@ -54,7 +54,7 @@ export default function Testimonials() {
   }, []);
 
   const prev = useCallback(() => {
-    navigate((current - 1 + testimonials.length) % testimonials.length, -1);
+    navigate((current - 1 + testimonials.length) % testimonials.length, 1);
   }, [current, navigate]);
 
   const next = useCallback(() => {
@@ -75,7 +75,7 @@ export default function Testimonials() {
         {/* Header — same layout as Clients */}
         <div className="mb-10">
           <AnimateOnScroll>
-            <p className="text-[11px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-4">
+            <p className="text-[15px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-4">
               Depoimentos
             </p>
           </AnimateOnScroll>

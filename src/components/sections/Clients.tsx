@@ -7,19 +7,19 @@ import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 const clients = [
   { name: "Reckitt",          logo: "/logos/clientes/reckitt.svg",        dark: true,  large: true,  xl: false },
   { name: "Meta",             logo: "/logos/clientes/meta.svg",            dark: true,  large: false, xl: false },
-  { name: "Telefônica Vivo",  logo: "/logos/clientes/tefefonica-vivo.svg", dark: false, large: true,  xl: false },
+  { name: "Telefônica Vivo",  logo: "/logos/clientes/tefefonica-vivo.svg", dark: true, large: true,  xl: false },
   { name: "Skechers",         logo: "/logos/clientes/skechers.svg",        dark: true,  large: false, xl: false },
   { name: "Chivas",           logo: "/logos/clientes/chivas.svg",          dark: true,  large: false, xl: false },
-  { name: "McDonald's",       logo: "/logos/clientes/mcdonalds.svg",       dark: false, large: true,  xl: false },
+  { name: "McDonald's",       logo: "/logos/clientes/mcdonalds.svg",       dark: true, large: true,  xl: false },
   { name: "Sherwin Williams", logo: "/logos/clientes/sherwin.svg",         dark: true,  large: true,  xl: false },
   { name: "Jeep",             logo: "/logos/clientes/jeep.svg",            dark: true,  large: false, xl: false },
-  { name: "Cielo",            logo: "/logos/clientes/cielo.svg",           dark: false, large: false, xl: false },
+  { name: "Cielo",            logo: "/logos/clientes/cielo.svg",           dark: true, large: false, xl: false },
   { name: "Kimberly-Clark",   logo: "/logos/clientes/kimberly.svg",        dark: true,  large: false, xl: false },
   { name: "KPMG",             logo: "/logos/clientes/kpmg.svg",            dark: true,  large: false, xl: false },
-  { name: "Jequiti",          logo: "/logos/clientes/jequiti.svg",         dark: false, large: false, xl: false },
+  { name: "Jequiti",          logo: "/logos/clientes/jequiti.svg",         dark: true, large: false, xl: false },
   { name: "Airbnb",           logo: "/logos/clientes/airbnb.svg",          dark: true,  large: false, xl: false },
   { name: "Epson",            logo: "/logos/clientes/epson.svg",           dark: true,  large: false, xl: false },
-  { name: "Catupiry",         logo: "/logos/clientes/catupiry-logo.svg",   dark: false, large: true,  xl: true  },
+  { name: "Catupiry",         logo: "/logos/clientes/catupiry.svg",   dark: true, large: true,  xl: true  },
 ];
 
 const backGradients = [
@@ -69,7 +69,7 @@ function LogoTile({
             }`}
             style={{ backfaceVisibility: "hidden" }}
           >
-            <div className={`relative ${xl ? "w-24 h-7 sm:w-40 sm:h-11 md:w-56 md:h-14 lg:w-72 lg:h-20" : large ? "w-20 h-6 sm:w-32 sm:h-9 md:w-44 md:h-12 lg:w-60 lg:h-16" : "w-16 h-5 sm:w-24 sm:h-7 md:w-32 md:h-9 lg:w-44 lg:h-12"}`}>
+            <div className={`relative ${xl ? "w-28 h-9 sm:w-48 sm:h-13 md:w-64 md:h-16 lg:w-80 lg:h-24" : large ? "w-20 h-6 sm:w-32 sm:h-9 md:w-44 md:h-12 lg:w-60 lg:h-16" : "w-16 h-5 sm:w-24 sm:h-7 md:w-32 md:h-9 lg:w-44 lg:h-12"}`}>
               <Image
                 src={logo}
                 alt={name}
@@ -89,7 +89,7 @@ function LogoTile({
               background: gradient,
             }}
           >
-            <div className={`relative ${xl ? "w-24 h-7 sm:w-40 sm:h-11 md:w-56 md:h-14 lg:w-72 lg:h-20" : large ? "w-20 h-6 sm:w-32 sm:h-9 md:w-44 md:h-12 lg:w-60 lg:h-16" : "w-16 h-5 sm:w-24 sm:h-7 md:w-32 md:h-9 lg:w-44 lg:h-12"}`}>
+            <div className={`relative ${xl ? "w-28 h-9 sm:w-48 sm:h-13 md:w-64 md:h-16 lg:w-80 lg:h-24" : large ? "w-20 h-6 sm:w-32 sm:h-9 md:w-44 md:h-12 lg:w-60 lg:h-16" : "w-16 h-5 sm:w-24 sm:h-7 md:w-32 md:h-9 lg:w-44 lg:h-12"}`}>
               <Image
                 src={logo}
                 alt={name}
@@ -115,9 +115,9 @@ export default function Clients() {
     queueRef.current = shuffled(clients.map((_, i) => i));
     posRef.current = 0;
 
-    const FLIP_DURATION  = 2200; // ms — matches CSS transition
-    const STAY_DURATION  = 8000; // ms — how long back face stays visible
-    const PAUSE_DURATION = 4000; // ms — gap before next card flips
+    const FLIP_DURATION  = 1000; // ms — matches CSS transition
+    const STAY_DURATION  = 500; // ms — how long back face stays visible
+    const PAUSE_DURATION = 0; // ms — gap before next card flips
 
     let timeout: ReturnType<typeof setTimeout>;
 
@@ -148,14 +148,14 @@ export default function Clients() {
   }, []);
 
   return (
-    <section id="clientes" className="relative bg-[#f5f5f7] py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden">
+    <section id="clientes" className="relative bg-[#f5f5f7] py-16 sm:py-20 md:py-28 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <AnimateOnScroll>
-              <p className="text-[11px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-4">
+              <p className="text-[15px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-4">
                 Clientes
               </p>
             </AnimateOnScroll>
@@ -166,21 +166,6 @@ export default function Clients() {
               </h2>
             </AnimateOnScroll>
           </div>
-          <AnimateOnScroll delay={0.18}>
-            <a
-              href="#contato"
-              className="group shrink-0 relative inline-flex overflow-hidden rounded-full bg-[#0c0c22] hover:bg-[#883fff] transition-colors duration-200 active:scale-[0.99] w-full sm:w-auto"
-            >
-              {/* Texto padrão — sai para cima */}
-              <span className="relative z-10 flex items-center px-6 py-3 text-white text-sm font-black transition-transform duration-200 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                Fale com a News
-              </span>
-              {/* Texto hover — sobe de baixo */}
-              <span className="absolute inset-0 z-10 flex items-center gap-2 justify-center text-white text-sm font-black translate-y-full transition-transform duration-150 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0">
-                Fale com a News
-              </span>
-            </a>
-          </AnimateOnScroll>
         </div>
 
         {/* Grid */}
@@ -189,18 +174,9 @@ export default function Clients() {
           {/* Description card */}
           <AnimateOnScroll className="col-span-2 md:col-span-1">
             <div className="flex flex-col justify-between aspect-4/3 rounded-xl border border-[#e0e4f4] bg-white p-6">
-              <p className="text-[#0c0c22] font-medium text-sm leading-relaxed">
-                Ao longo de 15 anos, construímos relações de confiança com algumas das maiores marcas do Brasil.
+              <p className="text-[#0c0c22] font-medium text-md leading-relaxed">
+                Ao longo de 17 anos, construímos relações de confiança com algumas das maiores marcas do Brasil.
               </p>
-              <a
-                href="#contato"
-                className="inline-flex items-center gap-1.5 text-[#7040f0] text-xs font-bold hover:gap-2.5 transition-all duration-200"
-              >
-                Saiba mais
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
             </div>
           </AnimateOnScroll>
 

@@ -100,15 +100,15 @@ export default function Cases() {
   return (
     <>
       <section
-        id="projetos"
-        className="relative bg-white py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden"
+        id="cases"
+        className="relative bg-white py-16 sm:py-20 md:py-28 lg:py-30 overflow-hidden"
       >
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
           {/* Header */}
           <div className="mb-14">
             <AnimateOnScroll>
-              <p className="text-[11px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-5">
-                Projetos
+              <p className="text-[15px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-5">
+                Cases
               </p>
             </AnimateOnScroll>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -200,19 +200,6 @@ export default function Cases() {
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                 </motion.div>
               ))}
-            </div>
-          </AnimateOnScroll>
-
-          {/* CTA */}
-          <AnimateOnScroll delay={0.3}>
-            <div className="mt-10 flex justify-center">
-              <button
-                onClick={() => setActiveCase(cases[0])}
-                className="group flex items-center gap-3 px-7 py-3.5 rounded-full border border-[#7040f0]/30 text-[#7040f0] text-sm font-bold tracking-wide hover:bg-[#7040f0] hover:text-white hover:border-[#7040f0] transition-all duration-300"
-              >
-                <span>Ver todos os cases</span>
-                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </button>
             </div>
           </AnimateOnScroll>
         </div>

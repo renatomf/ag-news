@@ -27,6 +27,17 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  const handleMobileNav = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    setMobileOpen(false);
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.scrollY - 96;
+      window.scrollTo({ top, behavior: "smooth" });
+    }, 350);
+  };
+
   const lineColor = "bg-white";
 
   return (
@@ -36,21 +47,21 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         style={{ zIndex: 110 }}
-        className={`fixed top-8 lg:top-4 left-3 right-3 lg:left-0 lg:right-0 lg:max-w-7xl lg:mx-auto rounded-xl transition-all duration-300 ${
-          scrolled ? "bg-[#3d2270] lg:bg-[#eceaeabf] lg:backdrop-blur-lg" : "bg-[#3d2270] lg:bg-transparent"
-        }`}
+        className="fixed top-0 lg:top-4 left-0 right-0 transition-all duration-300"
       >
-        <div className="max-w-7xl mx-auto px-8 lg:px-10 flex items-center justify-between h-14">
+        <div className={`max-w-7xl mx-auto px-8 lg:px-10 flex items-center justify-between h-20 lg:h-14 lg:rounded-xl transition-all duration-300 ${
+          scrolled ? "bg-[#3d2270] lg:bg-[#eceaeabf] lg:backdrop-blur-lg" : "bg-[#3d2270] lg:bg-transparent"
+        }`}>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             aria-label="News Eventos — início"
             className="cursor-pointer"
           >
             <Image
-              src="/logos/ag-news/logo-degrade.svg"
+              src="/logos/ag-news/logo-lampada.svg"
               alt="Logo News"
-              width={110}
-              height={26}
+              width={27.5}
+              height={6.5}
               priority
               className={`object-cover object-left brightness-0 invert lg:brightness-100 lg:invert-0 transition-transform duration-300 origin-center ${scrolled ? "lg:scale-[0.77]" : "lg:scale-100"}`}
             />
@@ -74,10 +85,10 @@ export default function Navbar() {
               className={`group relative overflow-hidden rounded-full bg-[#0c0c22] hover:bg-[#883fff] transition-all duration-300 active:scale-[0.99] origin-center ${scrolled ? "scale-[0.85]" : "scale-100"}`}
             >
               <span className="relative z-10 flex items-center px-6 py-3 text-white text-sm font-bold transition-transform duration-200 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
-                Fale Conosco
+                Fale com a News
               </span>
               <span className="absolute inset-0 z-10 flex items-center justify-center text-white text-sm font-bold translate-y-full transition-transform duration-150 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-y-0">
-                Fale Conosco
+                Fale com a News
               </span>
             </a>
           </div>
@@ -114,7 +125,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3, delay: 0, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-4xl sm:text-5xl font-black text-white/80 hover:text-white py-3 transition-colors w-full text-left cursor-pointer"
+                className="text-4xl sm:text-5xl font-black text-white/80 hover:text-white py-3 transition-colors w-full text-right cursor-pointer"
               >
                 Início
               </motion.button>
@@ -122,12 +133,12 @@ export default function Navbar() {
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => handleMobileNav(e, link.href)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.3, delay: (i + 1) * 0.06, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="text-4xl sm:text-5xl font-black text-white/80 hover:text-white py-3 transition-colors w-full text-left"
+                  className="text-4xl sm:text-5xl font-black text-white/80 hover:text-white py-3 transition-colors w-full text-right"
                 >
                   {link.label}
                 </motion.a>

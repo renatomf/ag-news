@@ -6,16 +6,8 @@ import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 const services = [
   {
-    id: "stands",
-    category: "Feiras & Exposições",
-    title: "Stands",
-    description: "Design e montagem de stands que impressionam e geram negócios em feiras e exposições.",
-    image: "/imagens/reckit/01.jpg",
-    accent: "#00d4f5",
-  },
-  {
     id: "eventos",
-    category: "Corporativo & Comemorativo",
+    category: "Corporativos e Comemorativos",
     title: "Eventos",
     description: "Convenções, reuniões, festas comemorativas e road shows com criatividade e execução precisa.",
     image: "/imagens/reckit-evento/01.jpg",
@@ -23,41 +15,41 @@ const services = [
   },
   {
     id: "incentivos",
-    category: "Viagens & Campanhas",
-    title: "Incentivos",
-    description: "Campanhas e viagens de incentivo que engajam equipes e reconhecem resultados.",
+    category: "Campanhas e Viagens",
+    title: "Marketing de Incentivo",
+    description: "Ações de Incentivo que engajam equipes e reconhecem resultados.",
     image: "/imagens/viagens/01.jpg",
     accent: "#f040e8",
   },
   {
-    id: "experiencias",
-    category: "Momentos Únicos",
-    title: "Experiências",
-    description: "Experiências únicas e inesquecíveis que ficam na memória dos participantes.",
-    image: "/imagens/chivas/01.jpg",
-    accent: "#00e896",
-  },
-  {
     id: "ativacoes",
-    category: "Live Marketing",
+    category: "Promocional",
     title: "Ativações",
-    description: "Ações que conectam marcas e pessoas com impacto real no ponto de venda e além.",
+    description: "Brindes e Ações que conectam marcas e pessoas com impacto real no ponto de venda e além.",
     image: "/imagens/mcdonalds/01.jpg",
     accent: "#b060f8",
   },
   {
-    id: "marketing",
-    category: "Estratégia & Resultados",
-    title: "Marketing",
-    description: "Estratégias de live marketing que transformam momentos em resultados mensuráveis.",
-    image: "/imagens/jequiti/01.jpg",
+    id: "stands",
+    category: "Feiras e Exposições",
+    title: "Stands",
+    description: "Design, montagem de stands e ações que impressionam e geram negócios em feiras e exposições.",
+    image: "/imagens/reckit/01.jpg",
     accent: "#00d4f5",
+  },
+  {
+    id: "hashtag",
+    category: "Logística interna",
+    title: "Hashtag Viagens",
+    description: "Criação de roteiros, Contratação de transfer terrestre e Hotéis, Emissão de bilhetes aéreos e Seguro viagem.",
+    image: "/imagens/viagens/02.jpg",
+    accent: "#00e896",
   },
 ];
 
 export default function Services() {
   return (
-    <section id="servicos" className="relative bg-[#f6f9fc] py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden">
+    <section id="servicos" className="relative bg-[#f6f9fc] py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden cu">
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, #7040f0, transparent)" }}
@@ -66,31 +58,37 @@ export default function Services() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-16">
           <AnimateOnScroll>
-            <p className="text-[11px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-5">
+            <p className="text-[15px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-5">
               O que fazemos
             </p>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.1}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0c0c22] leading-[1.05] tracking-tight mb-5">
               Somos{" "}
-              <span className="gradient-text">360°</span>
+              <span className="gradient-text">Impacto</span>
             </h2>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.18}>
             <p className="text-[#6a6a8c] font-medium text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-              Especialistas em criar experiências inesquecíveis no
-              que nos propomos a oferecer aos nossos clientes.
+              Criatividade diferenciada, inteligência na execução e conhecimento consolidado para transformar ideias em experiências memoráveis.
             </p>
           </AnimateOnScroll>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Custom intro card */}
+          <div className="group relative rounded-2xl overflow-hidden bg-white p-6 md:p-8 shadow-md flex flex-col items-start justify-start h-72 sm:h-72 md:h-95">
+            <p className="text-start text-[#0c0c22] text-base md:text-lg font-medium mt-8">
+              Criatividade diferenciada, inteligência na execução e conhecimento consolidado para transformar ideias em experiências memoráveis.
+            </p>
+          </div>
+
           {services.map((svc, i) => (
             <AnimateOnScroll key={svc.id} delay={i * 0.07}>
               <motion.div
                 whileHover={{ scale: 1.015 }}
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                className="group relative rounded-2xl overflow-hidden cursor-default h-72 sm:h-72 md:h-95"
+                className="group relative rounded-2xl overflow-hidden cursor-default h-72 sm:h-72 md:h-95 cursor-pointer"
               >
                 <Image
                   src={svc.image}
@@ -107,9 +105,9 @@ export default function Services() {
                   style={{ background: `linear-gradient(to right, ${svc.accent}, transparent)` }}
                 />
 
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8" style={svc.id === "incentivos" ? { transform: "translateY(-24px)" } : undefined}>
                   <p
-                    className="text-[10px] font-bold tracking-widest uppercase mb-2"
+                    className="text-[10px] font-bold tracking-wider uppercase mb-2"
                     style={{ color: svc.accent }}
                   >
                     {svc.category}
@@ -123,6 +121,23 @@ export default function Services() {
             </AnimateOnScroll>
           ))}
         </div>
+
+        {/* Frases de impacto */}
+        <AnimateOnScroll delay={0.15}>
+          <div className="mt-20 md:mt-24 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 md:gap-16 text-center">
+            {[
+              { before: "Cada ", word: "cliente", after: " importa." },
+              { before: "Cada ", word: "evento", after: " importa." },
+              { before: "Cada ", word: "detalhe", after: " importa." },
+            ].map((item, i) => (
+              <p key={i} className="text-xl sm:text-2xl md:text-3xl font-black text-[#0c0c22]">
+                {item.before}
+                <span className="gradient-text">{item.word}</span>
+                {item.after}
+              </p>
+            ))}
+          </div>
+        </AnimateOnScroll>
       </div>
     </section>
   );

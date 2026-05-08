@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 export default function Contact() {
@@ -10,12 +11,21 @@ export default function Contact() {
       style={{ background: "linear-gradient(180deg, #170129 0%, #25043d 100%)" }}
     >
       {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28 md:pt-40 pb-14">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28 md:pt-40">
         {/* Heading */}
         <AnimateOnScroll>
-          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight mb-10 max-w-3xl">
-            Vamos criar algo inesquecível.
-          </h2>
+          <div className="flex items-start justify-between gap-10 mb-6">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tight">
+              Vamos criar algo inesquecível.
+            </h2>
+            <Image
+              src="/logos/ag-news/logo-lampada.svg"
+              alt="News Eventos"
+              width={160}
+              height={160}
+              className="shrink-0 mt-2"
+            />
+          </div>
         </AnimateOnScroll>
 
         {/* CTA button — wide pill like Stripe */}
@@ -89,7 +99,7 @@ export default function Contact() {
       </div>
 
       {/* Animated gradient band */}
-      <div className="relative h-72 md:h-96 overflow-hidden">
+      <div className="relative h-72 md:h-76 overflow-hidden">
         {/* Diagonal clip */}
         <div
           className="contact-band-clip absolute inset-0 animate-gradient-flow"

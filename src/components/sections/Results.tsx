@@ -60,7 +60,7 @@ function Counter({ value, suffix, accent }: { value: number; suffix: string; acc
 export default function Results() {
   return (
     <section
-      className="relative py-16 sm:py-20 md:py-28 lg:py-40 overflow-hidden"
+      className="relative py-16 sm:py-20 md:py-28 lg:py-34 overflow-hidden"
       style={{ background: "#f6f9fc" }}
     >
       {/* Ambient */}
@@ -75,7 +75,7 @@ export default function Results() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-16">
           <AnimateOnScroll>
-            <p className="text-[11px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-5">
+            <p className="text-[15px] font-bold tracking-[0.3em] text-[#7040f0] uppercase mb-5">
               Resultados
             </p>
           </AnimateOnScroll>
@@ -119,32 +119,6 @@ export default function Results() {
             </AnimateOnScroll>
           ))}
         </div>
-
-        {/* CTA strip */}
-        <AnimateOnScroll delay={0.3}>
-          <div className="mt-14 rounded-2xl border border-[#e0e4f4] bg-white p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-6 overflow-hidden relative shadow-sm">
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(0,212,245,0.04) 0%, rgba(112,64,240,0.05) 50%, rgba(240,64,232,0.04) 100%)",
-              }}
-            />
-            <div className="relative">
-              <p className="font-black text-xl sm:text-2xl md:text-3xl text-[#0c0c22] leading-snug">
-                Cada cliente importa.{" "}
-                <span className="gradient-text">Cada evento importa.</span>
-              </p>
-              <p className="mt-1.5 text-[#6a6a8c] font-medium text-sm">Cada detalhe importa.</p>
-            </div>
-            <a
-              href="#contato"
-              className="relative w-full md:w-auto text-center shrink-0 px-8 py-4 rounded-full text-sm font-black text-white brand-gradient hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/25 whitespace-nowrap"
-            >
-              Fale com a News
-            </a>
-          </div>
-        </AnimateOnScroll>
       </div>
     </section>
   );

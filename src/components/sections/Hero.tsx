@@ -24,18 +24,18 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[65vh] sm:min-h-[85vh] md:min-h-screen bg-transparent flex items-start lg:items-center overflow-hidden"
+      className="relative min-h-[58vh] sm:min-h-[85vh] md:min-h-screen bg-transparent flex items-start lg:items-center overflow-hidden"
     >
 
       {/* Radial white gradient behind content */}
-      <div className="absolute z-10 -left-60 top-40 w-210 h-210 sm:left-1/12 sm:top-30 sm:w-200 sm:h-200 pointer-events-none"
+      <div className="absolute z-10 -left-12 top-24 w-160 h-160 sm:left-1/12 sm:top-30 sm:w-200 sm:h-200 pointer-events-none"
         style={{ background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(255,0,0,0) 70%)" }}
       />
 
       {/* Content */}
       <motion.div
         style={{ y, opacity }}
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pt-24 lg:pt-10 pb-16 sm:pb-16 md:pb-24"
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 pt-32 lg:pt-0 pb-16 sm:pb-16 md:pb-24"
       >
         <div className="max-w-xl lg:max-w-2xl">
           {/* Badge */}
@@ -52,15 +52,15 @@ export default function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <div className="overflow-hidden -mb-4 mt-4">
+          <div className="overflow-hidden mt-4">
             <motion.div
               initial={{ y: "115%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.9, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
             >
               <Image
-                src="/logos/ag-news/logo-degrade.svg"
-                alt="Logo News"
+                src="/logos/ag-news/logo-eventos.svg"
+                alt="Logo News Eventos"
                 width={800}
                 height={200}
                 priority
@@ -73,39 +73,20 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.68 }}
-            className="text-base md:text-lg text-[#6a6a8c] font-medium leading-relaxed mb-10 max-w-md"
+            className="text-base md:text-lg font-medium leading-relaxed mb-10 max-w-md mt-10"
           >
-            17 anos conectando marcas e colaboradores através de eventos e
-            experiências que ficam na memória
+            <span className="gradient-text font-bold text-2xl">Live Marketing</span>
+            <span className="text-[#6a6a8c]"> é a nossa paixão.</span>
+            <br />
+            <span className="text-[#6a6a8c]">E como entregamos é que faz cada experiência ser inesquecível.</span>
           </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.86 }}
-            className="flex flex-wrap gap-4 mb-20"
-          >
-            <a
-              href="#sobre"
-              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full text-sm font-black text-white brand-gradient hover:opacity-90 transition-opacity shadow-lg shadow-purple-500/25"
-            >
-              Conheça a News
-            </a>
-            <a
-              href="#contato"
-              className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-full text-sm font-bold bg-white text-[#0c0c22] border-2 border-[#e0e4f4] hover:border-[#7040f0]/40 hover:bg-[#f3f5ff] transition-all duration-300"
-            >
-              Fale Conosco
-            </a>
-          </motion.div>
 
           {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.06 }}
-            className="flex flex-wrap items-center gap-y-4"
+            className="flex flex-wrap items-center gap-y-4 "
           >
             {stats.map((s, i) => (
               <div
