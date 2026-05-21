@@ -6,7 +6,6 @@ import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
 function VideoPlayer() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [muted, setMuted] = useState(true);
 
   function toggleMute() {
@@ -17,20 +16,22 @@ function VideoPlayer() {
   }
 
   function enterFullscreen() {
-    const el = containerRef.current;
-    if (!el) return;
-    if (el.requestFullscreen) el.requestFullscreen();
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.requestFullscreen) v.requestFullscreen();
+    else if ((v as any).webkitRequestFullscreen) (v as any).webkitRequestFullscreen();
+    else if ((v as any).mozRequestFullScreen) (v as any).mozRequestFullScreen();
+    else if ((v as any).msRequestFullscreen) (v as any).msRequestFullscreen();
   }
 
   return (
-    <div ref={containerRef} className="relative w-full rounded-xl overflow-hidden bg-black shadow-lg aspect-video">
+    <div className="relative w-full rounded-xl overflow-hidden bg-black shadow-lg aspect-video">
       <video
         ref={videoRef}
         src="/videos/video-01.mp4"
         autoPlay
         muted
         loop
-        playsInline
         className="w-full h-full object-cover"
       />
       {/* Controls overlay */}
