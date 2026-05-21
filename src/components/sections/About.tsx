@@ -1,36 +1,73 @@
 "use client";
 
-import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { AnimateOnScroll } from "@/components/AnimateOnScroll";
 
-const viagensImages = [
-  "/imagens/viagens/01.jpg",
-  "/imagens/viagens/02.jpg",
-  "/imagens/viagens/03.jpg",
-];
+function VideoPlayer() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [muted, setMuted] = useState(true);
 
-function ViagensCarousel({ index }: { index: number }) {
+  function toggleMute() {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+  }
+
+  function enterFullscreen() {
+    const el = containerRef.current;
+    if (!el) return;
+    if (el.requestFullscreen) el.requestFullscreen();
+  }
+
   return (
-    <div className="relative w-full h-full min-h-48 overflow-hidden bg-[#0c0c22]">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
-          className="absolute inset-0"
+    <div ref={containerRef} className="relative w-full rounded-xl overflow-hidden bg-black shadow-lg aspect-video">
+      <video
+        ref={videoRef}
+        src="/videos/video-01.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="w-full h-full object-cover"
+      />
+      {/* Controls overlay */}
+      <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-3 bg-linear-to-t from-black/70 to-transparent">
+        {/* Mute toggle */}
+        <button
+          onClick={toggleMute}
+          aria-label={muted ? "Ativar som" : "Mutar"}
+          className="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm flex items-center justify-center text-white transition-colors duration-200 cursor-pointer"
         >
-          <Image
-            src={viagensImages[index]}
-            alt="Hashtag Viagens"
-            fill
-            className="object-cover"
-          />
-        </motion.div>
-      </AnimatePresence>
+          {muted ? (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <line x1="23" y1="9" x2="17" y2="15" />
+              <line x1="17" y1="9" x2="23" y2="15" />
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07" />
+            </svg>
+          )}
+        </button>
+        {/* Fullscreen */}
+        <button
+          onClick={enterFullscreen}
+          aria-label="Tela cheia"
+          className="w-9 h-9 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-sm flex items-center justify-center text-white transition-colors duration-200 cursor-pointer"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 3 21 3 21 9" />
+            <polyline points="9 21 3 21 3 15" />
+            <line x1="21" y1="3" x2="14" y2="10" />
+            <line x1="3" y1="21" x2="10" y2="14" />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }
@@ -91,20 +128,10 @@ const manifesto = [
   "Aqui, o seu projeto não é mais um.\nÉ prioridade.",
   "Tudo parte de você:\nseu objetivo, seu momento, sua expectativa.",
   "Porque no final, não é sobre o que entregamos.\nÉ sobre como entregamos.",
-  "Por isso, quem conhece a News…\nnão quer outra!",
+  "Por isso, quem conhece a News…\nnão quer trocar.",
 ];
 
 export default function WhyChooseUs() {
-  const [viagensIndex, setViagensIndex] = useState(0);
-
-  const viagensPrev = useCallback(() => setViagensIndex((i) => (i - 1 + viagensImages.length) % viagensImages.length), []);
-  const viagensNext = useCallback(() => setViagensIndex((i) => (i + 1) % viagensImages.length), []);
-
-  useEffect(() => {
-    const timer = setInterval(viagensNext, 5000);
-    return () => clearInterval(timer);
-  }, [viagensNext]);
-
   return (
     <section id="sobre" className="relative z-1 pt-0 sm:pt-20 md:pt-28 lg:pt-32 pb-16 sm:pb-20 md:pb-28 lg:pb-20 overflow-hidden" style={{ background: "linear-gradient(to bottom, transparent 0%, white 35%)" }}>
       {/* Radial white gradient behind "Somos Live Marketing" */}
@@ -134,46 +161,10 @@ export default function WhyChooseUs() {
               </p>
             </AnimateOnScroll>
 
-            {/* Hashtag Viagens card — horizontal layout */}
+            {/* Video */}
             <AnimateOnScroll delay={0.26}>
-              <div className="relative mt-8 rounded-xl overflow-hidden shadow-lg bg-white">
-
-                <div className="flex flex-col sm:flex-row">
-                  {/* Left — text + arrows */}
-                  <div className="flex flex-col justify-between gap-6 p-6 sm:p-7 sm:w-1/2">
-                    <div>
-                      <p className="font-black text-[#0c0c22] text-lg mb-3"># Hashtag Viagens</p>
-                      <p className="text-[#6a6a8c] text-sm font-medium leading-relaxed">
-                        Empresa com foco exclusivo em logística para eventos, facilitando o fluxo de operações gerenciadas por um único profissional de atendimento.
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={viagensPrev}
-                        aria-label="Anterior"
-                        className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#883fff] hover:bg-[#883fff] flex items-center justify-center text-[#883fff] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="9 2 4 7 9 12" />
-                        </svg>
-                      </button>
-                      <button
-                        onClick={viagensNext}
-                        aria-label="Próximo"
-                        className="w-9 h-9 rounded-full border border-[#e0e4f4] bg-white hover:border-[#883fff] hover:bg-[#883fff] flex items-center justify-center text-[#883fff] hover:text-white transition-colors duration-200 shadow-sm cursor-pointer"
-                      >
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="5 2 10 7 5 12" />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Right — image */}
-                  <div className="relative h-52 sm:h-auto sm:w-1/2">
-                    <ViagensCarousel index={viagensIndex} />
-                  </div>
-                </div>
+              <div className="mt-8">
+                <VideoPlayer />
               </div>
             </AnimateOnScroll>
           </div>
@@ -231,9 +222,8 @@ export default function WhyChooseUs() {
         <AnimateOnScroll delay={0.2}>
           <div className="mt-20 max-w-2xl mx-auto text-center">
             <p className="text-xl sm:text-2xl md:text-3xl font-black text-[#0c0c22] leading-snug">
-              &ldquo;Aqui, a gente resolve. Depois explica.{" "}
-              Por isso quem conhece a News&hellip;{" "}
-              <span className="gradient-text">não quer outra.&rdquo;</span>
+              &ldquo;Aqui a gente resolve, rápido. Depois explica.{" "}
+              <span className="gradient-text">O foco está na solução.</span>&rdquo;
             </p>
           </div>
         </AnimateOnScroll>

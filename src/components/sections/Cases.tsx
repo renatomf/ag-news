@@ -161,12 +161,12 @@ export default function Cases() {
                     </span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                    <p
-                      className="text-[10px] font-bold tracking-widest uppercase mb-2"
-                      style={{ color: c.accent }}
+                    <span
+                      className="inline-block text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3"
+                      style={{ background: `${c.accent}80`, color: "#ffffff", border: `1px solid ${c.accent}80`, boxShadow: `0 2px 12px ${c.accent}80` }}
                     >
                       {c.category}
-                    </p>
+                    </span>
                     <h3 className="font-black text-white text-2xl mb-2 leading-tight">
                       {c.client}
                     </h3>

@@ -10,7 +10,7 @@ const services = [
     category: "Corporativos e Comemorativos",
     title: "Eventos",
     description: "Convenções, reuniões, festas comemorativas e road shows com criatividade e execução precisa.",
-    image: "/imagens/reckit-evento/01.jpg",
+    image: "/imagens/mcdonalds/14.jpeg",
     accent: "#7040f0",
   },
   {
@@ -26,7 +26,7 @@ const services = [
     category: "Promocional",
     title: "Ativações",
     description: "Brindes e Ações que conectam marcas e pessoas com impacto real no ponto de venda e além.",
-    image: "/imagens/mcdonalds/01.jpg",
+    image: "/imagens/reckit/01.jpg",
     accent: "#b060f8",
   },
   {
@@ -34,15 +34,15 @@ const services = [
     category: "Feiras e Exposições",
     title: "Stands",
     description: "Design, montagem de stands e ações que impressionam e geram negócios em feiras e exposições.",
-    image: "/imagens/reckit/01.jpg",
+    image: "/imagens/reckit-evento/14.jpeg",
     accent: "#00d4f5",
   },
   {
     id: "hashtag",
     category: "Logística interna",
     title: "Hashtag Viagens",
-    description: "Criação de roteiros, Contratação de transfer terrestre e Hotéis, Emissão de bilhetes aéreos e Seguro viagem.",
-    image: "/imagens/viagens/02.jpg",
+    description: "Somos Praticidade: especialistas em logística para eventos, centralizando operações e informações em um único atendimento. Roteiros, transfers, hotéis, passagens e seguro.",
+    image: "/imagens/viagens/04.jpeg",
     accent: "#00e896",
   },
 ];
@@ -101,16 +101,30 @@ export default function Services() {
                 />
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8" style={svc.id === "incentivos" ? { transform: "translateY(-24px)" } : undefined}>
-                  <p
-                    className="text-[10px] font-bold tracking-wider uppercase mb-2"
-                    style={{ color: svc.accent }}
+                  <span
+                    className="inline-block text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3"
+                    style={{ background: `${svc.accent}80`, color: "#ffffff", border: `1px solid ${svc.accent}80`, boxShadow: `0 2px 12px ${svc.accent}60` }}
                   >
                     {svc.category}
-                  </p>
+                  </span>
                   <h3 className="font-black text-white text-2xl mb-2 leading-tight">{svc.title}</h3>
                   <p className="text-white/60 text-sm font-medium leading-relaxed max-w-sm opacity-100 sm:opacity-0 sm:group-hover:opacity-100 translate-y-0 sm:translate-y-2 sm:group-hover:translate-y-0 transition-all duration-400">
                     {svc.description}
                   </p>
+                  {svc.id === "hashtag" && (
+                    <a
+                      href="https://pt.vecteezy.com/fotos-gratis/caminhando"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-yellow-400/60 text-[9px] mt-3 hover:text-yellow-400 transition-colors underline underline-offset-2"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#facc15" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0" style={{verticalAlign:"middle", display:"block"}}>
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                      </svg>
+                      Caminhando Fotos de banco de imagens por Vecteezy
+                    </a>
+                  )}
                 </div>
               </motion.div>
             </AnimateOnScroll>

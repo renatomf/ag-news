@@ -65,6 +65,17 @@ export default function StreakBackground() {
       });
     };
 
+    gsap.fromTo(
+      containerRef.current,
+      { clipPath: "polygon(-10% 110%, 110% 110%, 110% 110%, -10% 110%)" },
+      {
+        clipPath: "polygon(-10% -10%, 110% -10%, 110% 110%, -10% 110%)",
+        duration: 1.8,
+        ease: "power3.out",
+        delay: 0.2,
+      }
+    );
+
     const ctx = gsap.context(() => {
       gsap.set(layerRef.current, {
         xPercent: 12,
@@ -95,7 +106,7 @@ export default function StreakBackground() {
       ref={containerRef}
       aria-hidden
       className="absolute top-0 right-0 w-full h-[75vh] sm:h-[130vh] md:h-[200vh] pointer-events-none overflow-hidden"
-      style={{ zIndex: 0 }}
+      style={{ zIndex: 0, clipPath: "polygon(-10% 110%, 110% 110%, 110% 110%, -10% 110%)" }}
     >
       <svg
         className="absolute top-[-40%] right-[-30%] w-[160%] h-[160%]"
