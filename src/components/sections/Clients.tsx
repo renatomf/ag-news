@@ -20,6 +20,10 @@ const clients = [
   { name: "Airbnb",           logo: "/logos/clientes/airbnb.svg",          dark: true,  large: false, xl: false },
   { name: "Epson",            logo: "/logos/clientes/epson.svg",           dark: true,  large: false, xl: false },
   { name: "Catupiry",         logo: "/logos/clientes/catupiry.svg",   dark: true, large: true,  xl: true  },
+  { name: "BD",               logo: "/logos/clientes/bd.svg",         dark: true,  large: false, xl: false },
+  { name: "Subido",           logo: "/logos/clientes/subido.svg",     dark: true,  large: false, xl: false },
+  { name: "Pereira",          logo: "/logos/clientes/pereira.svg",    dark: true,  large: false, xl: false },
+  { name: "Veja",             logo: "/logos/clientes/veja.svg",       dark: true,  large: false, xl: true,  invert: false },
 ];
 
 const backGradients = [
@@ -43,10 +47,10 @@ function shuffled(arr: number[]) {
 }
 
 function LogoTile({
-  name, logo, dark, large, xl, index, flipped,
+  name, logo, dark, large, xl, index, flipped, invert,
 }: {
   name: string; logo: string; dark: boolean;
-  large: boolean; xl: boolean; index: number; flipped: boolean;
+  large: boolean; xl: boolean; index: number; flipped: boolean; invert?: boolean;
 }) {
   const gradient = backGradients[index % backGradients.length];
   const dir = flipDirections[index % flipDirections.length];
@@ -74,7 +78,7 @@ function LogoTile({
                 src={logo}
                 alt={name}
                 fill
-                className={`object-contain ${dark ? "brightness-0 invert" : ""}`}
+                className={`object-contain ${(invert ?? dark) ? "brightness-0 invert" : ""}`}
                 sizes="(max-width: 640px) 96px, (max-width: 768px) 160px, (max-width: 1024px) 224px, 288px"
               />
             </div>
@@ -94,7 +98,7 @@ function LogoTile({
                 src={logo}
                 alt={name}
                 fill
-                className="object-contain brightness-0 invert"
+                className={`object-contain ${(invert ?? dark) ? "brightness-0 invert" : ""}`}
                 sizes="(max-width: 640px) 96px, (max-width: 768px) 160px, (max-width: 1024px) 224px, 288px"
               />
             </div>
