@@ -100,6 +100,18 @@ export default function Services() {
                   style={{ background: `linear-gradient(to right, ${svc.accent}, transparent)` }}
                 />
 
+                {svc.id === "hashtag" && (
+                  <div className="absolute top-5 right-5 z-10">
+                    <Image
+                      src="/logos/clientes/viagens.svg"
+                      alt="Hashtag Viagens"
+                      width={50}
+                      height={30}
+                      className="object-contain"
+                    />
+                  </div>
+                )}
+
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8" style={svc.id === "incentivos" ? { transform: "translateY(-24px)" } : undefined}>
                   <span
                     className="inline-block text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-3"
